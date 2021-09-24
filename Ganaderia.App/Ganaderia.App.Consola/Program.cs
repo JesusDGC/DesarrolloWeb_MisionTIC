@@ -33,6 +33,9 @@ namespace Ganaderia.App.Consola
 
         }
 
+        /// <summary>
+        /// Este método permite obtener la información de todos los ganaderos registrados en la base de datos.
+        /// </summary>
         private static void GetAllGanaderos()
         {
             var ganaderos = _repoGanadero.GetAllGanaderos();
