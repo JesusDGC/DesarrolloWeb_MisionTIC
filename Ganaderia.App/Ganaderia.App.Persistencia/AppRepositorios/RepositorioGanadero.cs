@@ -1,6 +1,8 @@
 using System;
 using Ganaderia.App.Dominio;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Ganaderia.App.Persistencia
 {
@@ -17,12 +19,45 @@ namespace Ganaderia.App.Persistencia
         {
             var ganaderoAdicionado = _appContext.Ganaderos.Add(ganadero);
             _appContext.SaveChanges();
-            return ganadero;
+            return ganaderoAdicionado.Entity;
         }
 
         IEnumerable<Ganadero> IRepositorioGanadero.GetAllGanaderos()
         {
             return _appContext.Ganaderos;
+        }
+
+        Ganadero IRepositorioGanadero.UpdateGanadero(Ganadero ganadero)
+        {
+            var ganaderoEncontrado = _appContext.Ganaderos.FirstOrDefault(g => g.Id == ganadero.Id);
+
+            if (ganaderoEncontrado != null)
+            {
+                ganaderoEncontrado.Nombres = ganadero.Nombres;
+                ganaderoEncontrado.Apellidos = ganadero.Apellidos;
+
+                _appContext.SaveChanges();
+            }
+
+            return ganaderoEncontrado;
+
+        }
+
+        void IRepositorioGanadero.DeleteGanadero(int idGanadero)
+        {
+            var ganaderoEncontrado = _appContext.Ganaderos.FirstOrDefault(g => g.Id == idGanadero);
+
+            if (ganaderoEncontrado != null)
+            {
+                _appContext.Ganaderos.Remove(ganaderoEncontrado);
+                _appContext.SaveChanges();
+            }
+        }
+
+        Ganadero IRepositorioGanadero.GetGanadero(int idGanadero)
+        {
+            var ganaderoEncontrado = _appContext.Ganaderos.FirstOrDefault(g => g.Id == idGanadero);
+            return ganaderoEncontrado;
         }
 
     }

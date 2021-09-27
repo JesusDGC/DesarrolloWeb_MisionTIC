@@ -8,11 +8,15 @@ namespace Ganaderia.App.Consola
     {
         
         private static IRepositorioGanadero _repoGanadero = new RepositorioGanadero(new Persistencia.AppContext());
+        
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
             //AddGanadero();
-            GetAllGanaderos();
+            //GetAllGanaderos();
+            //UpdateGanadero();
+            //DeleteGanadero(2);
+            GetGanadero(1);
         }
 
         private static void AddGanadero ()
@@ -31,17 +35,52 @@ namespace Ganaderia.App.Consola
 
             _repoGanadero.AddGanadero(ganadero);
 
+            Console.WriteLine("Fue adicionado el ganadero " + ganadero.Nombres + " " + ganadero.Apellidos);
+
         }
 
         private static void GetAllGanaderos()
         {
             var ganaderos = _repoGanadero.GetAllGanaderos();
-            //for (int i = 0; i < 10; i++)
+
+            Console.WriteLine("Listado de Ganaderos:");
 
             foreach(Ganadero item in ganaderos)
             {
-                Console.WriteLine(item.Nombres);
+                Console.WriteLine(item.Nombres + " " + item.Apellidos);
             }
+        }
+
+        private static void UpdateGanadero()
+        {
+            var ganadero = new Ganadero
+            {
+                Id = 2,
+                Nombres = "Claudia X.",
+                Apellidos = "Gomez A.",
+                NumeroTelefono = "3159876543",
+                Direccion = "Calle 10 # 59-12",
+                Correo = "xicla@hotmail.com",
+                Contrasena = "1234",
+                Latitude = 4556,
+                Longitud = 3445
+            };
+
+            _repoGanadero.UpdateGanadero(ganadero);
+
+            Console.WriteLine("Fue actualizado el ganadero " + ganadero.Nombres + " " + ganadero.Apellidos);
+        }
+
+        private static void DeleteGanadero(int idGanadero)
+        {
+            _repoGanadero.DeleteGanadero(idGanadero);
+            Console.WriteLine("Fue borrado el ganadero " + idGanadero);
+        } 
+
+        private static void GetGanadero(int idGanadero)
+        {
+            var ganadero = _repoGanadero.GetGanadero(idGanadero);
+            Console.WriteLine("El ganadero seleccionado es " + ganadero.Nombres + " " + ganadero.Apellidos);
         }
     }
 }
