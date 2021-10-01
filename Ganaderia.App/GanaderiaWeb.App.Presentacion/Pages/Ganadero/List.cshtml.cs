@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using GanaderiaWeb.App.Dominio;
+using Ganaderia.App.Dominio;
 
-namespace GanaderiaWeb.App.Presentacion.Pages
+namespace Ganaderia.App.Presentacion.Pages
 {
     public class ListModel : PageModel
     {

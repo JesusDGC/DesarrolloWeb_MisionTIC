@@ -5,6 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GanaderiaWeb.App.Dominio\GanaderiaWeb.App.Dominio.csproj" />
+    <ProjectReference Include="..\Ganaderia.App.Dominio\Ganaderia.App.Dominio.csproj" />
   </ItemGroup>
 </Project>
