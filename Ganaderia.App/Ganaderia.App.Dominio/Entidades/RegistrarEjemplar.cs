@@ -1,6 +1,6 @@
 namespace Ganaderia.App.Dominio
 {
-    public class RegistrarEjemplar
+    public class RegistrarEjemplar : Ganadero
 
     {
         public int IdLote { get; set; }

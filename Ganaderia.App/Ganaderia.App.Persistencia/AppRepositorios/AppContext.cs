@@ -7,6 +7,7 @@ namespace Ganaderia.App.Persistencia
     {
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Ganadero> Ganaderos { get; set; }
+        public DbSet<RegistrarEjemplar> RegistrarEjemplares { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -14,6 +15,6 @@ namespace Ganaderia.App.Persistencia
             {
                 optionsBuilder.UseSqlServer("Data source = (localdb)\\MSSQLLocalDB; Initial Catalog = Grupo36-1");
             }
-        }
+          }
     }
 }
