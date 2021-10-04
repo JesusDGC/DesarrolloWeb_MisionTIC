@@ -14,8 +14,9 @@
     </tr>
   </thead>
   <tbody>
-    @foreach (var ganadero in Model.ListaGanaderos) {
-      <tr>        
+    @foreach (var ganadero in Model.ListaGanaderos)
+    {
+      <tr>
         <td>@ganadero.Nombres</td>
         <td>@ganadero.Apellidos</td>
         <td>@ganadero.Correo</td>
